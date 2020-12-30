@@ -2,11 +2,10 @@ package alaiz.hashim.placeguide
 
 
 import android.content.Context
-
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.room.Room
 import database.PlaceDatabase
-
 import java.util.*
 import java.util.concurrent.Executors
 
@@ -31,6 +30,7 @@ class PlaceRepository private constructor(context: Context) {
 
     fun addPlace(place: Place) {
         executor.execute {
+            Log.d("PlaceDetailViewM_fun ","PlaceRepository")
             placeDao.addPlace(place)
         }
     }
@@ -49,12 +49,14 @@ class PlaceRepository private constructor(context: Context) {
         private var INSTANCE: PlaceRepository? = null
 
         fun initialize(context: Context) {
+            Log.d("PlaceDetailViewM_fun ","initialize")
             if (INSTANCE == null) {
                 INSTANCE = PlaceRepository(context)
             }
         }
 
         fun get(): PlaceRepository {
+            Log.d("PlaceDetailViewM_fun ","initialize")
             return INSTANCE ?:
             throw IllegalStateException("PlaceRepository must be initialized")
         }

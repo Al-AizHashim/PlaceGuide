@@ -1,6 +1,7 @@
 package alaiz.hashim.placeguide
 
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
@@ -12,6 +13,7 @@ class PlaceDetailViewModel:ViewModel (){
 
     fun savePlace(place: Place) {
         placeRepository.addPlace(place)
+        Log.d("PlaceDetailViewM_fun ","savePlace fun")
     }
 
 /*
