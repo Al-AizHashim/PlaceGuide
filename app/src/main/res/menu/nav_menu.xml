@@ -27,5 +27,12 @@
 
 
         />
+    />
+    <item
+        android:id="@+id/my_location"
+        android:title="@string/my_location"
+
+
+        />
 
 </menu>

@@ -13,7 +13,7 @@
         <item>School</item>
         <item>Hospital</item>
         <item>Police station</item>
-        <item>Park</item>
+        <item>Garden</item>
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -21,4 +21,5 @@
     <string name="longitude">Longitude</string>
     <string name="latitude">Latitude</string>
     <string name="add">add</string>
+    <string name="my_location">My Location</string>
 </resources>

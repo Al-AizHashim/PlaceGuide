@@ -76,16 +76,26 @@ class MainActivity : AppCompatActivity() {
         navView.setNavigationItemSelectedListener {
 
             when (it.itemId) {
-                R.id.hospital -> {
-                    moveToMapFragment(R.id.hospital, "Starred Fragment")
+
+                R.id.school -> {
+                    moveToMapFragment(0, "school")
                     true
                 }
-                R.id.school -> {
-                    moveToMapFragment(R.id.school, "Recent Fragment")
+                R.id.hospital -> {
+                    moveToMapFragment(1, "Hospitals")
+                    Toast.makeText(this,"the item id is : ",Toast.LENGTH_LONG).show()
                     true
                 }
                 R.id.police_station -> {
-                    moveToMapFragment(R.id.police_station, "Upload Fragment")
+                    moveToMapFragment(2, "Police Station")
+                    true
+                }
+                R.id.garden -> {
+                    moveToMapFragment(3, "Garden")
+                    true
+                }
+                R.id.my_location -> {
+                    moveToMapFragment(4, "My Location")
                     true
                 }
                 else -> {
@@ -106,13 +116,15 @@ class MainActivity : AppCompatActivity() {
             super.onBackPressed()
     }
 
-    fun moveToMapFragment(itemId: Int, title: String) {
-
+    fun moveToMapFragment(category: Int, title: String) {
+        //Toast.makeText(this,"the item id is : $itemId",Toast.LENGTH_LONG).show()
         val intent = Intent(this, MapsActivity::class.java)
-
+        intent.apply {
+            putExtra("PlaceCategory", category)
+            putExtra("title",title)
+        }
         startActivity(intent)
         drawerLayout.closeDrawer(GravityCompat.START)
-        Toast.makeText(this, "$title is opened", Toast.LENGTH_LONG).show()
     }
 
 }

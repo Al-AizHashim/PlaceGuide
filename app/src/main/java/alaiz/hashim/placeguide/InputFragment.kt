@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.util.*
 
 
@@ -18,6 +19,7 @@ class InputFragment : Fragment() {
     private lateinit var longitudeField: EditText
     private lateinit var latitudeField: EditText
     private lateinit var placeSpinner: Spinner
+    private lateinit var fab:FloatingActionButton
 
     private val placeDetailViewModel: PlaceDetailViewModel by lazy {
         ViewModelProvider(this).get(PlaceDetailViewModel::class.java)
@@ -30,12 +32,12 @@ class InputFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_input, container, false)
-        setHasOptionsMenu(true)
         nameField = view.findViewById(R.id.name_et) as EditText
         addressField = view.findViewById(R.id.address_et) as EditText
         longitudeField = view.findViewById(R.id.longitude_et) as EditText
         latitudeField = view.findViewById(R.id.latitude_et) as EditText
         placeSpinner = view.findViewById(R.id.place_spinner)
+        fab=view.findViewById(R.id.fab)
         return view
     }
 
@@ -44,20 +46,13 @@ class InputFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val appCompatActivity = activity as AppCompatActivity
         appCompatActivity.supportActionBar?.setTitle("Add place")
-
-
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.input_fragment_menu, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.menu_add) {
+        fab.setOnClickListener {
             insertDataToDb()
         }
-        return super.onOptionsItemSelected(item)
+
     }
+
+
 
     private fun insertDataToDb() {
         val name = nameField.text.toString()
